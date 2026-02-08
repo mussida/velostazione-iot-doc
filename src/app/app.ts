@@ -45,37 +45,37 @@ export class App {
       subsections: [],
     },
     {
-      name: 'Firmware dei nodi IoT',
+      name: '5.Firmware dei nodi IoT',
       route: 'firmware-nodi-iot',
       subsections: [],
     },
     {
-      name: '5.Servizi sul Raspberry Pi',
+      name: '6.Servizi sul Raspberry Pi',
       route: 'servizi-raspberry',
       subsections: [],
     },
     {
-      name: '6.Backend Django e integrazione IoT',
+      name: '7.Backend Django e integrazione IoT',
       route: 'backend-django',
       subsections: [],
     },
     {
-      name: '7.Frontend Angular e flusso utente',
+      name: '8.Frontend Angular e flusso utente',
       route: 'frontend-angular',
       subsections: [],
     },
     {
-      name: '8.Flusso di lavoro end-to-end',
+      name: '10.Flusso di lavoro end-to-end',
       route: 'flusso-end-to-end',
       subsections: [],
     },
     {
-      name: '9.Discussione e sviluppi futuri',
+      name: '11.Discussione e sviluppi futuri',
       route: 'sviluppi-futuri',
       subsections: [],
     },
     {
-      name: '10.Appendice',
+      name: '12.Appendice',
       route: 'appendice',
       subsections: [],
     }
