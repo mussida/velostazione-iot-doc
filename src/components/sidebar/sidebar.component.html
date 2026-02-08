@@ -1,0 +1,88 @@
+<div class="hidden h-screen lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+  <div
+    class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-primary px-6 pb-4"
+  >
+    <div class="flex flex-col min-h-16 items-start justify-start py-4 gap-2 text-gray-500">
+      <div>Velostazione-Iot</div>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://mussida.github.io/Computer-Graphics/"
+        class="text-sm underline flex items-center cursor-pointer gap-2"
+      >
+        <img class="h-24" src="assets/colored.svg" alt="" />
+      </a>
+    </div>
+    <nav class="flex flex-1 flex-col">
+      <ul role="list" class="flex flex-1 flex-col gap-y-7">
+        <li>
+          <ul role="list" class="-mx-2 space-y-1">
+            @for (section of sections(); track $index) {
+            <li>
+              <div
+                [ngClass]="{
+                'text-primary': rla.isActive,
+                }"
+                class="group flex justify-between gap-x-3 rounded-md text-sm/6 font-semibold text-gray-500 hover:text-primary"
+              >
+                <a
+                  routerLinkActive
+                  #rla="routerLinkActive"
+                  [routerLink]="[section.route]"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  class="flex items-center gap-x-3 py-1 px-3 w-full select-none"
+                  (click)="toggleSubsection(section)"
+                >
+                  {{ section.name }}
+                </a>
+                @if (section.subsections.length > 0) {
+                <div
+                  class="flex items-center py-2 px-3 rounded-e-md cursor-pointer"
+                  (click)="toggleSubsection(section)"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-4 ransform duration-200"
+                    [ngClass]="{
+                      'rotate-90': isSubsectionVisible(section),
+                      'rotate-0': !isSubsectionVisible(section),
+                    }"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                    />
+                  </svg>
+                </div>
+                }
+              </div>
+              @if(isSubsectionVisible(section)) { @for (subsection of
+              section.subsections; track $index) {
+              <a
+                routerLinkActive
+                #rlaSubsection="routerLinkActive"
+                [routerLink]="subsection.route"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="text-gray-500"
+                [ngClass]="{
+                  'text-primary': rlaSubsection.isActive,
+                  }"
+              >
+                <div class="text-xs px-4 mt-2 select-none">
+                  {{ subsection.name }}
+                </div>
+              </a>
+              } }
+            </li>
+            }
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

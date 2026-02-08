@@ -1,12 +1,83 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { DashboardComponent } from '../components/dashboard/dashboard.component';
+
+export interface Section {
+  name: string;
+  route: string;
+  subsections: Subsection[];
+}
+
+export interface Subsection {
+  name: string;
+  route: string[];
+}
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterOutlet, DashboardComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('velostation-iot');
+  title = 'velostazione-iot-doc';
+
+  sections: Section[] = [
+    {
+      name: '1.Introduzione',
+      route: '',
+      subsections: [],
+    },
+    {
+      name: '2.Analisi del problema e requisiti',
+      route: 'analisi-requisiti',
+      subsections: [],
+    },
+    {
+      name: '3.Architettura del sistema',
+      route: 'architettura',
+      subsections: [],
+    },
+    {
+      name: '4.Progettazione hardware',
+      route: 'progettazione-hardware',
+      subsections: [],
+    },
+    {
+      name: 'Firmware dei nodi IoT',
+      route: 'firmware-nodi-iot',
+      subsections: [],
+    },
+    {
+      name: '5.Servizi sul Raspberry Pi',
+      route: 'servizi-raspberry',
+      subsections: [],
+    },
+    {
+      name: '6.Backend Django e integrazione IoT',
+      route: 'backend-django',
+      subsections: [],
+    },
+    {
+      name: '7.Frontend Angular e flusso utente',
+      route: 'frontend-angular',
+      subsections: [],
+    },
+    {
+      name: '8.Flusso di lavoro end-to-end',
+      route: 'flusso-end-to-end',
+      subsections: [],
+    },
+    {
+      name: '9.Discussione e sviluppi futuri',
+      route: 'sviluppi-futuri',
+      subsections: [],
+    },
+    {
+      name: '10.Appendice',
+      route: 'appendice',
+      subsections: [],
+    }
+  ];
 }
