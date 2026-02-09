@@ -55,8 +55,7 @@ import { CommonModule } from '@angular/common';
           </p>
 
           <p class="mb-4 leading-relaxed">
-            La Figura 8.1 mostra un esempio di schermata di assegnazione di un tag RFID del parcheggio, mentre la Figura 8.2 
-            mostra la lista dei parcheggi attivi con badge di stato IoT.
+            La Figura 8.2 mostra la lista dei parcheggi attivi con badge di stato IoT.
           </p>
 
           <!-- Figura elenco parcheggi -->

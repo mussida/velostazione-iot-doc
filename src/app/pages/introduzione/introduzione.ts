@@ -30,7 +30,7 @@ import { CommonModule } from '@angular/common';
 
           <p class="mb-4 leading-relaxed">
             La Velostazione occupa gli spazi sotto la scalinata monumentale del Pincio, affacciata su via Indipendenza. 
-            L'ambiente è articolato in una sequenza di locali con destinazioni d'uso differenti: aree tecniche, spazi per 
+            L'ambiente è composto da sequenza di locali con destinazioni d'uso differenti: aree tecniche, spazi per 
             il pubblico, zone di servizio e, soprattutto, una vasta area destinata al deposito delle biciclette.
           </p>
 
@@ -48,8 +48,7 @@ import { CommonModule } from '@angular/common';
               class="w-full border border-gray-700 rounded"
             />
             <figcaption class="text-sm text-gray-500 mt-3 text-center">
-              <strong>Figura 1.1:</strong> Planimetria della Velostazione: in alto gli spazi riscaldati, 
-              in basso l'area di deposito biciclette.
+              <strong>Figura 1.1:</strong> Planimetria della Velostazione: in basso l'area di deposito biciclette.
             </figcaption>
           </figure>
 
@@ -57,7 +56,7 @@ import { CommonModule } from '@angular/common';
             Al centro della porzione superiore è collocato il locale <strong>Box Office</strong>, che costituisce il 
             principale punto di contatto con il pubblico. Qui l'operatore registra ingressi e uscite, gestisce abbonamenti 
             e tariffe e interagisce con la piattaforma software. Nell'ambito di questo progetto il Box Office è anche il 
-            luogo in cui viene allestita la postazione IoT di desk: un banco con Raspberry Pi
+            luogo in cui viene allestita la postazione IoT del desk: un banco con Raspberry Pi
             <sup class="text-primary">
               <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/" 
                  target="_blank" 
@@ -79,7 +78,7 @@ import { CommonModule } from '@angular/common';
             Verso la parte inferiore della planimetria si può osservare il <strong>Deposito biciclette</strong>, 
             suddiviso in più zone contigue. Ogni zona è attrezzata con gruppi di portabici numerati (ad esempio 
             "N. 16 portabici per 32 bici", "N. 10 portabici per 20 bici", ecc.), che nel gestionale corrispondono 
-            a insiemi di stalli logici. In questa porzione dello spazio viene installato, nel prototipo, il nodo IoT 
+            a un insieme di stalli. In questa porzione dello spazio viene installato, nel prototipo, il nodo IoT 
             di stallo: una scheda Heltec
             <sup class="text-primary">
               <a href="https://heltec.org/project/wifi-lora-32-v3/" 
@@ -91,19 +90,19 @@ import { CommonModule } from '@angular/common';
           </p>
 
           <p class="mb-4 leading-relaxed">
-            Questa distinzione tra Box Office e Deposito biciclette è centrale per l'architettura del sistema:
+            Questa distinzione tra Box Office e Deposito biciclette è centrale per l'architettura del sistema, infatti:
           </p>
 
           <ul class="list-disc list-inside mb-6 space-y-2 ml-4">
             <li>nel Box Office si svolgono tutte le operazioni amministrative e gestionali (assegnazione dei tag, 
-                creazione e chiusura dei parcheggi, gestione delle tariffe);</li>
-            <li>nel Deposito biciclette si osserva e si controlla lo stato fisico degli stalli (presenza della bici 
+                creazione e chiusura dei parcheggi, gestione delle tariffe),</li>
+            <li>e nel Deposito biciclette si osserva e si controlla lo stato fisico degli stalli (presenza della bici 
                 e lettura del tag nello stallo assegnato).</li>
           </ul>
 
           <p class="mb-4 leading-relaxed">
-            Il prototipo IoT mira a collegare in modo sistematico questi due livelli: il livello gestionale, che vive 
-            nel Box Office e nel gestionale web, e il livello fisico, che vive tra i portabici del deposito.
+            Il prototipo IoT collega questi due livelli: il livello gestionale, che vive nel Box Office e nel gestionale 
+            web, e il livello fisico, che vive tra i portabici del deposito.
           </p>
         </section>
 
@@ -113,8 +112,8 @@ import { CommonModule } from '@angular/common';
           
           <p class="mb-4 leading-relaxed">
             Nel gestionale ogni parcheggio è rappresentato come una tripla <em>(bici, stallo, intervallo di tempo)</em>. 
-            Al momento della creazione di un parcheggio attivo, il sistema stabilisce che la bicicletta X deve occupare 
-            lo stallo logico <code class="bg-gray-200 px-2 py-1 rounded text-primary">P001</code> a partire da un 
+            Al momento della creazione di un parcheggio attivo, il sistema stabilisce che una data bicicletta X deve occupare, 
+            ad esempio, lo stallo denominato <code class="bg-gray-200 px-2 py-1 rounded text-primary">P001</code> a partire da un 
             certo istante e fino al rilascio.
           </p>
 
@@ -133,7 +132,7 @@ import { CommonModule } from '@angular/common';
           </p>
 
           <p class="mb-4 leading-relaxed">
-            Per raggiungere questo obiettivo, il prototipo combina tag RFID e nodi IoT installati sugli stalli, integrati 
+            Per raggiungere questo obiettivo, il prototipo combina tag RFID e nodi LoRa installati sugli stalli, integrati 
             con il backend Django già esistente, che si occupa di ricevere e interpretare gli eventi generati nel deposito.
           </p>
         </section>
@@ -146,7 +145,7 @@ import { CommonModule } from '@angular/common';
 
           <ul class="list-disc list-inside mb-6 space-y-2 ml-4">
             <li>progettare un nodo IoT di stallo, basato su scheda Heltec WiFi LoRa 32 v3, in grado di leggere tag RFID 
-                e inviare eventi al sistema centrale;</li>
+                e inviare eventi al Box Office;</li>
             <li>allestire una postazione di desk RFID al Box Office (Raspberry Pi + RC522 + buzzer) per l'assegnazione 
                 controllata dei tag alle biciclette;</li>
             <li>realizzare un gateway LoRa su Raspberry che trasformi i messaggi radio dei nodi in richieste HTTP verso 
@@ -167,8 +166,8 @@ import { CommonModule } from '@angular/common';
 
           <ol class="list-decimal list-inside mb-6 space-y-3 ml-4">
             <li><strong>Creazione del parcheggio al desk</strong>: dal Box Office l'operatore crea un parcheggio attivo 
-                indicando bici, stallo logico (ad esempio <code class="bg-gray-200 px-2 py-1 rounded text-primary">P001</code>) 
-                e tipologia di tariffa, poi assegna un tag RFID appoggiandolo sul lettore collegato al Raspberry Pi. Il backend 
+                indicando bici, stallo (ad esempio <code class="bg-gray-200 px-2 py-1 rounded text-primary">P001</code>) 
+                e tipologia di tariffa, e assegnando un tag RFID tramite un lettore collegato al Raspberry Pi. Il backend 
                 memorizza l'UID del tag per quel parcheggio.</li>
             <li><strong>Parcheggio nel deposito</strong>: l'utente si sposta nella zona di Deposito biciclette e parcheggia 
                 la bici nello stallo fisico corrispondente. Il nodo IoT montato sul portabici legge il tag tramite RC522 e 
@@ -185,7 +184,7 @@ import { CommonModule } from '@angular/common';
                 <code class="bg-gray-200 px-2 py-1 rounded text-primary">ok</code>, 
                 <code class="bg-gray-200 px-2 py-1 rounded text-primary">mismatch</code>, 
                 <code class="bg-gray-200 px-2 py-1 rounded text-primary">unknown_rfid</code>) e aggiorna lo stato 
-                sintetico del parcheggio. Il frontend mostra il risultato all'operatore tramite badge colorati nella lista 
+                del parcheggio. Il frontend mostra il risultato all'operatore tramite badge colorati nella lista 
                 dei parcheggi.</li>
             <li><strong>Rilascio</strong>: al momento del ritiro, il parcheggio viene chiuso al Box Office; il backend 
                 marca lo stallo come libero e azzera il campo <code class="bg-gray-200 px-2 py-1 rounded text-primary">rfid_uid</code> 
@@ -199,34 +198,18 @@ import { CommonModule } from '@angular/common';
           
           <p class="mb-4 leading-relaxed">
             Alla base dell'integrazione IoT c'è una scelta di modellazione: il tag RFID non viene usato come identità 
-            permanente della bicicletta, ma come <em>gettone</em> temporaneo di accesso al deposito.
+            permanente della bicicletta, ma come <em>gettone</em> temporaneo di accesso al deposito. In pratica al Box Office 
+            l'operatore associa un tag a una bici solo quando sta per creare (o ha appena creato) un parcheggio attivo, poi 
+            durante la vita del parcheggio il campo <code class="bg-gray-200 px-2 py-1 rounded text-primary">rfid_uid</code> 
+            della bici è valorizzato e consente al backend di riconoscere gli eventi provenienti dagli stalli. Infine, quando 
+            il parcheggio viene chiuso, lo stesso metodo di rilascio si occupa di azzerare il campo 
+            <code class="bg-gray-200 px-2 py-1 rounded text-primary">rfid_uid</code>, liberando automaticamente il tag.
+            Questa impostazione permette ai tag di poter essere riutilizzati facilmente.
           </p>
 
-          <p class="mb-4 leading-relaxed">In pratica:</p>
-
-          <ul class="list-disc list-inside mb-6 space-y-2 ml-4">
-            <li>al Box Office l'operatore associa un tag a una bici solo quando sta per creare (o ha appena creato) un 
-                parcheggio attivo;</li>
-            <li>durante la vita del parcheggio il campo <code class="bg-gray-200 px-2 py-1 rounded text-primary">rfid_uid</code> 
-                della bici è valorizzato e consente al backend di riconoscere gli eventi provenienti dagli stalli;</li>
-            <li>quando il parcheggio viene chiuso, lo stesso metodo di rilascio si occupa di azzerare il campo 
-                <code class="bg-gray-200 px-2 py-1 rounded text-primary">rfid_uid</code>, liberando automaticamente il tag.</li>
-          </ul>
-
-          <p class="mb-4 leading-relaxed">Questa impostazione presenta diversi vantaggi pratici:</p>
-
-          <ul class="list-disc list-inside mb-6 space-y-2 ml-4">
-            <li>i tag possono essere riutilizzati facilmente e non devono "seguire" la bici nel tempo;</li>
-            <li>il sistema rimane compatibile con scenari in cui la stessa bici può essere parcheggiata a lungo senza 
-                richiedere un tag personale permanente;</li>
-            <li>la logica di rilascio del tag è concentrata in un unico punto del dominio (rilascio del parcheggio), 
-                riducendo la possibilità di errori o tag dimenticati in stato assegnato.</li>
-          </ul>
-
           <p class="mb-4 leading-relaxed">
-            Nei capitoli successivi questo modello logico viene tradotto in firmware dei nodi di stallo, servizi su 
-            Raspberry Pi, estensioni del backend Django e schermate di frontend che orchestrano il flusso tra Box Office 
-            e Deposito biciclette.
+            Nei capitoli successivi vengono spiegati nodi di stallo, servizi su Raspberry Pi, estensioni del backend Django 
+            e schermate di frontend per mostrare il flusso tra Box Office e Deposito biciclette.
           </p>
         </section>
 
@@ -248,7 +231,7 @@ import { CommonModule } from '@angular/common';
               <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/" 
                  target="_blank" 
                  class="text-primary hover:text-green-500 underline">
-                https://www.raspberrypi.com/
+                https://www.raspberrypi.com/products/raspberry-pi-4-model-b/
               </a>
             </li>
             <li>

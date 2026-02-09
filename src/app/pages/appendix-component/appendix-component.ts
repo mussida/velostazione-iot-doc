@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 
         <!-- Sezione A.1 -->
         <section class="mb-12">
-          <h3 class="text-2xl font-bold text-primary mb-6">A.1 Firmware dei nodi IoT</h3>
+          <h3 class="text-2xl font-bold text-primary mb-6">A.1 Codice dei nodi IoT</h3>
           
           <!-- Sottosezione A.1.1 -->
           <h4 class="text-xl font-bold text-primary mb-4 mt-8">A.1.1 Invio di un evento rfid_scan</h4>
@@ -86,7 +86,7 @@ import { CommonModule } from '@angular/common';
 {{ '}' }}</code></pre>
 
           <!-- Sottosezione A.1.3 -->
-          <h4 class="text-xl font-bold text-primary mb-4 mt-8">A.1.3 Firmware del gateway Heltec RX</h4>
+          <h4 class="text-xl font-bold text-primary mb-4 mt-8">A.1.3 Codice del gateway Heltec RX</h4>
           
           <pre class="bg-white border border-gray-400 text-gray-400 rounded-md overflow-x-auto my-4 p-4">
 <code class="text-sm"><span class="text-blue-400">void</span> <span class="text-green-400">loop</span>() {{ '{' }}
@@ -198,22 +198,6 @@ import { CommonModule } from '@angular/common';
 <span class="text-blue-400">void</span> <span class="text-green-400">beepLong</span>() {{ '{' }}
   beep(<span class="text-orange-400">300</span>);
 {{ '}' }}</code></pre>
-
-          <!-- Sottosezione A.3.2 -->
-          <h4 class="text-xl font-bold text-primary mb-4 mt-8">A.3.2 Gestione del segnale nel gateway LoRa</h4>
-          
-          <pre class="bg-white border border-gray-400 text-gray-400 rounded-md overflow-x-auto my-4 p-4">
-<code class="text-sm"><span class="text-purple-400">def</span> <span class="text-green-400">handle_signal</span>(signum, frame):
-    logging.info(<span class="text-green-600">f"Segnale {{ '{' }}signum{{ '}' }} ricevuto, chiudo il gateway."</span>)
-    sys.exit(<span class="text-orange-400">0</span>)
-
-<span class="text-purple-400">if</span> __name__ == <span class="text-green-600">"__main__"</span>:
-    signal.signal(signal.SIGINT, handle_signal)
-    signal.signal(signal.SIGTERM, handle_signal)
-    <span class="text-purple-400">try</span>:
-        main()
-    <span class="text-purple-400">except</span> KeyboardInterrupt:
-        logging.info(<span class="text-green-600">"Terminazione richiesta dall'utente."</span>)</code></pre>
         </section>
 
         <!-- Sezione A.4 -->
@@ -263,11 +247,11 @@ import { CommonModule } from '@angular/common';
 
           <ul class="list-disc list-inside mb-6 space-y-2 ml-4">
             <li>
-              <em>Velostazione IoT</em> (firmware dei nodi di stallo e servizi Python su Raspberry Pi): 
+              componente IoT <em>Velostazione IoT</em> (Codice dei nodi di stallo e servizi Python su Raspberry Pi): 
               <a href="https://github.com/mussida/velostazione-iot" 
                  target="_blank" 
                  class="text-primary hover:text-green-500 underline">
-                velostazione-iot
+                https://github.com/mussida/velostazione-iot
               </a>
             </li>
           </ul>

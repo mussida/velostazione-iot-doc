@@ -45,7 +45,7 @@ export class App {
       subsections: [],
     },
     {
-      name: '5.Firmware dei nodi IoT',
+      name: '5.Logica dei nodi IoT',
       route: 'firmware-nodi-iot',
       subsections: [],
     },
@@ -65,15 +65,20 @@ export class App {
       subsections: [],
     },
     {
-      name: '10.Flusso di lavoro end-to-end',
-      route: 'flusso-end-to-end',
+      name: '8.Discussione finale, analisi dei consumi e sviluppi futuri',
+      route: 'analisi-consumi',
       subsections: [],
     },
-    {
-      name: '11.Discussione e sviluppi futuri',
-      route: 'sviluppi-futuri',
-      subsections: [],
-    },
+    // {
+    //   name: '10.Flusso di lavoro end-to-end',
+    //   route: 'flusso-end-to-end',
+    //   subsections: [],
+    // },
+    // {
+    //   name: '11.Discussione e sviluppi futuri',
+    //   route: 'sviluppi-futuri',
+    //   subsections: [],
+    // },
     {
       name: '12.Appendice',
       route: 'appendice',

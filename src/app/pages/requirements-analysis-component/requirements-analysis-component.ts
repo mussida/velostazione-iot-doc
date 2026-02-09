@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
           <h3 class="text-2xl font-bold text-primary mb-6">2.1 Requisiti funzionali</h3>
           
           <p class="mb-4 leading-relaxed">
-            A partire dall'analisi del contesto operativo della Velostazione e del flusso di lavoro descritto nel capitolo 
+            A partire dall'analisi del contesto operativo e del flusso di lavoro descritto nel capitolo 
             introduttivo, emergono una serie di requisiti funzionali che il sistema IoT deve soddisfare per garantire la 
             coerenza tra stato fisico degli stalli e stato logico dei parcheggi gestiti dal software.
           </p>
@@ -32,9 +32,7 @@ import { CommonModule } from '@angular/common';
           </p>
 
           <p class="mb-4 leading-relaxed">
-            Ogni evento generato da un nodo IoT deve includere un insieme minimo di informazioni strutturate, necessarie per 
-            l'identificazione del contesto in cui l'evento è stato prodotto e per la sua corretta interpretazione da parte 
-            del backend. In particolare, un evento deve contenere:
+            Ogni evento generato da un nodo IoT deve includere un insieme minimo di informazioni strutturate:
           </p>
 
           <ul class="list-disc list-inside mb-6 space-y-2 ml-4">
@@ -46,15 +44,8 @@ import { CommonModule } from '@angular/common';
                 la natura dell'azione osservata dal nodo. Nel prototipo il tipo di evento principale è 
                 <code class="bg-gray-200 px-2 py-1 rounded text-primary">rfid_scan</code>, utilizzato per segnalare la lettura 
                 di un tag RFID presso uno stallo;</li>
-            <li>un eventuale identificativo RFID (<code class="bg-gray-200 px-2 py-1 rounded text-primary">rfid_uid</code>), 
-                presente solo per gli eventi che coinvolgono la lettura di un tag e assente per eventi di altra natura.</li>
+            <li>un identificativo RFID (<code class="bg-gray-200 px-2 py-1 rounded text-primary">rfid_uid</code>)</li>
           </ul>
-
-          <p class="mb-4 leading-relaxed">
-            Il backend deve essere in grado di ricondurre il valore di <code class="bg-gray-200 px-2 py-1 rounded text-primary">node_id</code> 
-            allo stallo logico corrispondente senza fare affidamento su parametri di rete instabili, come indirizzi IP o MAC address. 
-            Questa scelta permette di rendere il sistema robusto rispetto a riavvii, riconfigurazioni di rete o sostituzioni hardware.
-          </p>
 
           <p class="mb-4 leading-relaxed">
             Per evitare la registrazione multipla dello stesso evento, il sistema deve implementare un meccanismo di deduplicazione 
@@ -79,11 +70,6 @@ import { CommonModule } from '@angular/common';
             <li><code class="bg-gray-200 px-2 py-1 rounded text-primary">ok</code>: la bicicletta è parcheggiata nello stallo 
                 fisico corrispondente a quello assegnato dal gestionale.</li>
           </ul>
-
-          <p class="mb-4 leading-relaxed">
-            Questa classificazione costituisce la base per la visualizzazione dello stato IoT dei parcheggi nel frontend e per 
-            l'individuazione immediata di eventuali anomalie operative.
-          </p>
         </section>
 
         <!-- Sezione 2.2 -->
@@ -113,9 +99,8 @@ import { CommonModule } from '@angular/common';
           </p>
 
           <p class="mb-4 leading-relaxed">
-            Infine, la complessità del firmware installato sui nodi di stallo deve essere mantenuta il più possibile limitata, 
-            delegando al backend la logica di interpretazione degli eventi. Questa scelta semplifica lo sviluppo, il debugging 
-            e l'evoluzione del sistema, centralizzando le decisioni applicative nel livello software più facilmente aggiornabile.
+            Infine, la complessità della logica dei nodi di stallo deve essere mantenuta il più possibile limitata, 
+            delegando al backend la logica di interpretazione degli eventi. Questa scelta semplifica lo sviluppo.
           </p>
         </section>
 

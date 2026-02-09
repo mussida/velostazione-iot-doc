@@ -36,9 +36,9 @@ import { CommonModule } from '@angular/common';
           </figure>
 
           <p class="mb-4 leading-relaxed">
-            Il lettore RC522 è collegato direttamente alla scheda Heltec tramite cavetti jumper, senza l'utilizzo di supporti 
-            o piastre dedicate. Questa configurazione, adottata nel prototipo, consente una rapida installazione e facilita 
-            le operazioni di test e riconfigurazione del nodo. Nella Figura 4.2 è visibile il modulo RC522 impiegato.
+            Il lettore RC522 è collegato direttamente alla scheda Heltec tramite cavetti jumper. Questa configurazione, 
+            adottata nel prototipo, consente una rapida installazione e facilita le operazioni di test e riconfigurazione 
+            del nodo. Nella Figura 4.2 è mostrato il modulo RC522 utilizzato.
           </p>
 
           <!-- Figura RC522 -->
@@ -55,7 +55,7 @@ import { CommonModule } from '@angular/common';
 
           <p class="mb-4 leading-relaxed">
             Il buzzer è posizionato in modo da essere udibile dall'utente nel momento in cui la bicicletta viene correttamente 
-            inserita nello stallo. Esso fornisce un feedback acustico immediato sull'esito della lettura RFID e sull'invio 
+            inserita nello stallo, così da fornire un feedback acustico immediato sull'esito della lettura RFID e sull'invio 
             dell'evento. La Figura 4.3 mostra il componente utilizzato.
           </p>
 
@@ -122,7 +122,7 @@ import { CommonModule } from '@angular/common';
           </div>
 
           <p class="mb-4 leading-relaxed">
-            Il lettore RC522 utilizza un bus SPI separato, dedicato esclusivamente alla comunicazione con il modulo RFID:
+            La Tabella 4.2 mostra come sono collegati lettore RC522 e la scheda Heltec.
           </p>
 
           <!-- Tabella RC522 -->
@@ -146,7 +146,7 @@ import { CommonModule } from '@angular/common';
                 </tr>
                 <tr>
                   <td class="border border-gray-400 px-4 py-2">GND</td>
-                  <td class="border border-gray-400 px-4 py-2">Massa</td>
+                  <td class="border border-gray-400 px-4 py-2">Ground</td>
                   <td class="border border-gray-400 px-4 py-2">GND</td>
                 </tr>
                 <tr>
@@ -174,17 +174,12 @@ import { CommonModule } from '@angular/common';
                   <td class="border border-gray-400 px-4 py-2">Reset</td>
                   <td class="border border-gray-400 px-4 py-2">GPIO 21</td>
                 </tr>
-                <tr>
-                  <td class="border border-gray-400 px-4 py-2">IRQ</td>
-                  <td class="border border-gray-400 px-4 py-2">Interruzione</td>
-                  <td class="border border-gray-400 px-4 py-2">Non collegato</td>
-                </tr>
               </tbody>
             </table>
           </div>
 
           <p class="mb-4 leading-relaxed">
-            Il buzzer è collegato a un GPIO generico della scheda Heltec:
+            Invece la Tabella 4.3 mostra come il buzzer è collegato ai pin della scheda Heltec:
           </p>
 
           <!-- Tabella Buzzer -->
@@ -213,7 +208,7 @@ import { CommonModule } from '@angular/common';
                 </tr>
                 <tr>
                   <td class="border border-gray-400 px-4 py-2">− (GND)</td>
-                  <td class="border border-gray-400 px-4 py-2">Massa</td>
+                  <td class="border border-gray-400 px-4 py-2">Ground</td>
                   <td class="border border-gray-400 px-4 py-2">GND</td>
                 </tr>
               </tbody>
@@ -240,12 +235,11 @@ import { CommonModule } from '@angular/common';
             </figcaption>
           </figure>
 
-          <!-- Nota: Figura 4.5 commentata perché manca nel LaTeX -->
-          <!-- 
+          <!-- Figura nodo stallo installato -->
           <figure class="my-8">
             <img 
-              src="assets/chapter4/nodo-stallo-assemblato.jpg" 
-              alt="Nodo di stallo installato"
+              src="assets/chapter4/NodoStallo.png" 
+              alt="Nodo di stallo installato sul portabici"
               class="w-4/5 mx-auto border border-gray-700 rounded"
             />
             <figcaption class="text-sm text-gray-500 mt-3 text-center">
@@ -253,7 +247,6 @@ import { CommonModule } from '@angular/common';
               alimentato tramite power bank.
             </figcaption>
           </figure>
-          -->
         </section>
 
         <!-- Sezione 4.2 -->
@@ -267,9 +260,9 @@ import { CommonModule } from '@angular/common';
           </p>
 
           <p class="mb-4 leading-relaxed">
-            La Figura 4.5 mostra la postazione completa, comprensiva del Raspberry Pi, del lettore RFID RC522, del buzzer 
-            e del gateway LoRa collegato via USB. Nella figura è possibile distinguere visivamente le due parti funzionali 
-            della postazione, che verranno descritte separatamente nelle sezioni seguenti.
+            La Figura 4.6 mostra la postazione completa, comprensiva del Raspberry Pi, del lettore RFID RC522, del buzzer 
+            e del gateway LoRa collegato via USB. Nella figura è possibile distinguere visivamente (dai colori) le due parti 
+            funzionali della postazione, che verranno descritte separatamente nelle sezioni seguenti.
           </p>
 
           <!-- Figura desk setup -->
@@ -280,7 +273,7 @@ import { CommonModule } from '@angular/common';
               class="w-4/5 mx-auto border border-gray-700 rounded"
             />
             <figcaption class="text-sm text-gray-500 mt-3 text-center">
-              <strong>Figura 4.5:</strong> Postazione di desk al Box Office basata su Raspberry Pi, utilizzata sia per 
+              <strong>Figura 4.6:</strong> Postazione di desk al Box Office basata su Raspberry Pi, utilizzata sia per 
               l'assegnazione dei tag RFID sia come gateway LoRa per la ricezione degli eventi dagli stalli.
             </figcaption>
           </figure>
@@ -296,14 +289,14 @@ import { CommonModule } from '@angular/common';
 
           <p class="mb-4 leading-relaxed">
             La mappatura dei pin del lettore RC522, utilizzata nel prototipo in modalità 
-            <code class="bg-gray-200 px-2 py-1 rounded text-primary">BOARD</code>, è riportata nella Tabella seguente:
+            <code class="bg-gray-200 px-2 py-1 rounded text-primary">BOARD</code>, è riportata nella Tabella 4.4.
           </p>
 
           <!-- Tabella RC522 su Raspberry -->
           <div class="overflow-x-auto my-6">
             <table class="border-collapse border border-gray-400 w-full text-center">
               <caption class="text-sm text-gray-400 mb-2 text-left">
-                <strong>Tabella 4.4:</strong> Mappatura RC522 su Raspberry Pi (modalità BOARD)
+                <strong>Tabella 4.4:</strong> Mappatura RC522 su Raspberry Pi
               </caption>
               <thead>
                 <tr class="bg-gray-200">
@@ -321,7 +314,7 @@ import { CommonModule } from '@angular/common';
                 <tr>
                   <td class="border border-gray-400 px-4 py-2">GND</td>
                   <td class="border border-gray-400 px-4 py-2">Pin 6</td>
-                  <td class="border border-gray-400 px-4 py-2">Massa</td>
+                  <td class="border border-gray-400 px-4 py-2">Ground</td>
                 </tr>
                 <tr>
                   <td class="border border-gray-400 px-4 py-2">SCK</td>
@@ -348,17 +341,12 @@ import { CommonModule } from '@angular/common';
                   <td class="border border-gray-400 px-4 py-2">Pin 22</td>
                   <td class="border border-gray-400 px-4 py-2">GPIO25</td>
                 </tr>
-                <tr>
-                  <td class="border border-gray-400 px-4 py-2">IRQ</td>
-                  <td class="border border-gray-400 px-4 py-2">--</td>
-                  <td class="border border-gray-400 px-4 py-2">Non collegato</td>
-                </tr>
               </tbody>
             </table>
           </div>
 
           <p class="mb-4 leading-relaxed">
-            Il buzzer è collegato a un GPIO del Raspberry Pi e viene utilizzato per segnalare l'inizio della lettura, 
+            Il buzzer è collegato al Raspberry Pi e viene utilizzato per segnalare l'inizio della lettura, 
             l'avvenuta acquisizione del tag o eventuali errori:
           </p>
 
@@ -366,7 +354,7 @@ import { CommonModule } from '@angular/common';
           <div class="overflow-x-auto my-6">
             <table class="border-collapse border border-gray-400 w-full text-center">
               <caption class="text-sm text-gray-400 mb-2 text-left">
-                <strong>Tabella 4.5:</strong> Mappatura buzzer su Raspberry Pi (modalità BOARD)
+                <strong>Tabella 4.5:</strong> Mappatura buzzer su Raspberry Pi
               </caption>
               <thead>
                 <tr class="bg-gray-200">
@@ -389,7 +377,7 @@ import { CommonModule } from '@angular/common';
                 <tr>
                   <td class="border border-gray-400 px-4 py-2">− (GND)</td>
                   <td class="border border-gray-400 px-4 py-2">GND</td>
-                  <td class="border border-gray-400 px-4 py-2">Massa</td>
+                  <td class="border border-gray-400 px-4 py-2">Ground</td>
                 </tr>
               </tbody>
             </table>

@@ -12,14 +12,14 @@ import { CommonModule } from '@angular/common';
         
         <!-- Titolo capitolo -->
         <h1 class="text-4xl font-bold text-primary mb-8">Capitolo 5</h1>
-        <h2 class="text-3xl font-bold text-primary mb-12">Firmware dei nodi IoT</h2>
+        <h2 class="text-3xl font-bold text-primary mb-12">Logica dei nodi IoT</h2>
 
         <!-- Sezione 5.1 -->
         <section class="mb-12">
           <h3 class="text-2xl font-bold text-primary mb-6">5.1 Nodo di stallo: gestione RFID e anti-spam</h3>
           
           <p class="mb-4 leading-relaxed">
-            Il firmware del nodo di stallo, sviluppato in Arduino C++, è responsabile dell'inizializzazione dei moduli 
+            Il codice del nodo di stallo, sviluppato in Arduino C++, è responsabile dell'inizializzazione dei moduli 
             LoRa e RFID (RC522), della lettura continua dei tag e dell'invio degli eventi verso il sistema centrale.
           </p>
 
@@ -32,7 +32,7 @@ import { CommonModule } from '@angular/common';
           </p>
 
           <p class="mb-4 leading-relaxed">
-            Gli eventi vengono trasmessi come messaggi testuali strutturati, contenenti l'identità del nodo, un numero di 
+            Gli eventi vengono trasmessi come messaggi strutturati, contenenti l'identità del nodo, un numero di 
             sequenza incrementale, il tipo di evento e, quando presente, l'UID del tag RFID letto. Un esempio di messaggio 
             generato dal nodo di stallo è il seguente:
           </p>
@@ -42,19 +42,19 @@ import { CommonModule } from '@angular/common';
           </div>
 
           <p class="mb-4 leading-relaxed">
-            L'invio degli eventi è accompagnato da un feedback locale tramite buzzer, che segnala all'utente il corretto 
-            invio del messaggio o eventuali errori di trasmissione.
+            L'invio degli eventi è accompagnato da un feedback tramite buzzer, che segnala all'utente il corretto 
+            invio del messaggio.
           </p>
 
           <p class="mb-4 leading-relaxed">
-            Per evitare la generazione ripetuta di eventi nel caso in cui un tag rimanga fermo sul lettore, il firmware 
-            implementa una logica di anti-spam basata su tre elementi: l'ultimo UID rilevato, lo stato di presenza del tag 
+            Per evitare la generazione ripetuta di eventi nel caso in cui un tag rimanga fermo sul lettore, è implementata 
+            una logica di anti-spam basata su tre elementi: l'ultimo UID rilevato, lo stato di presenza del tag 
             e un intervallo di cooldown temporale. Questa strategia consente di distinguere tra una permanenza del tag sul 
             lettore e una nuova azione intenzionale di parcheggio.
           </p>
 
           <p class="mb-4 leading-relaxed">
-            Il listato completo del firmware del nodo di stallo, comprensivo delle funzioni di invio degli eventi e della 
+            Il codice completo del nodo di stallo, comprensivo delle funzioni di invio degli eventi e della 
             logica di anti-spam, è riportato in Appendice A.1.
           </p>
         </section>

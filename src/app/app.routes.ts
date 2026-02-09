@@ -10,6 +10,7 @@ import { DiscussionFutureComponent } from './pages/discussion-future-component/d
 import { AngularFrontendComponent } from './pages/angular-frontend-component/angular-frontend-component';
 import { EndToEndWorkflowComponent } from './pages/end-to-end-workflow-component/end-to-end-workflow-component';
 import { AppendixComponent } from './pages/appendix-component/appendix-component';
+import { EnergyAnalysisComponent } from './pages/energy-analysis-component/energy-analysis-component';
 
 export const routes: Routes = [
   {
@@ -46,13 +47,17 @@ export const routes: Routes = [
     component: AngularFrontendComponent,
   },
   {
-    path: 'flusso-end-to-end',
-    component: EndToEndWorkflowComponent,
+    path: 'analisi-consumi',
+    component: EnergyAnalysisComponent,
   },
-  {
-    path: 'sviluppi-futuri',
-    component: DiscussionFutureComponent,
-  },
+//   {
+//     path: 'flusso-end-to-end',
+//     component: EndToEndWorkflowComponent,
+//   },
+//   {
+//     path: 'sviluppi-futuri',
+//     component: DiscussionFutureComponent,
+//   },
   {
     path:'appendice',
     component: AppendixComponent

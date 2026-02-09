@@ -20,14 +20,13 @@ import { CommonModule } from '@angular/common';
           
           <p class="mb-4 leading-relaxed">
             Il gateway LoRa rappresenta il punto di collegamento tra la rete radio dei nodi di stallo e il backend 
-            applicativo. Dal punto di vista software, questo ruolo è svolto da uno script Python eseguito su Raspberry Pi 
-            all'interno di una virtual environment dedicata.
+            applicativo. Dal punto di vista software, questo ruolo è svolto da uno script Python eseguito su Raspberry Pi.
           </p>
 
           <p class="mb-4 leading-relaxed">
             Il servizio apre una connessione seriale verso la scheda Heltec configurata in ricezione e legge in modo 
             continuo le righe di testo corrispondenti ai messaggi LoRa ricevuti. Da ciascuna linea viene estratto il 
-            payload dell'evento, ignorando eventuali informazioni accessorie come il valore di RSSI.
+            payload dell'evento, ignorando eventuali informazioni aggiuntive come il valore di RSSI.
           </p>
 
           <p class="mb-4 leading-relaxed">
@@ -54,8 +53,8 @@ import { CommonModule } from '@angular/common';
           <h3 class="text-2xl font-bold text-primary mb-6">6.2 API Desk RFID</h3>
           
           <p class="mb-4 leading-relaxed">
-            Al Box Office è presente un microservizio dedicato alla lettura dei tag RFID, implementato tramite Flask e 
-            ospitato sul Raspberry Pi. Questo servizio espone un'API HTTP utilizzata dal frontend per acquisire in modo 
+            Al Box Office è presente un servizio dedicato alla lettura dei tag RFID, implementato tramite Flask<sup class="text-primary">1</sup> e 
+            ospitato sul Raspberry Pi. Questo servizio espone un'endpoint HTTP utilizzata dal frontend per acquisire in modo 
             controllato l'UID di un tag RFID.
           </p>
 
@@ -67,15 +66,31 @@ import { CommonModule } from '@angular/common';
           </p>
 
           <p class="mb-4 leading-relaxed">
-            L'UID letto viene normalizzato in formato esadecimale e restituito al frontend come risposta JSON. Questo 
+            L'UID letto viene codificato in formato esadecimale e restituito al frontend come risposta JSON. Questo 
             approccio consente di separare la gestione dell'hardware RFID dalla logica applicativa del backend, mantenendo 
             il sistema modulare e facilmente estendibile.
           </p>
 
           <p class="mb-4 leading-relaxed">
-            Il listato completo del microservizio di desk RFID è riportato in Appendice A.2.
+            Il codice completo del microservizio di desk RFID è riportato in Appendice A.2.
           </p>
         </section>
+
+        <!-- Note -->
+        <aside class="mt-16 pt-8 border-t border-gray-700">
+          <h4 class="text-lg font-bold text-primary mb-4">Note</h4>
+          <ol class="text-sm space-y-2 text-gray-500">
+            <li>
+              <sup>1</sup> Flask, framework web scritto in Python, utilizzato per esporre un servizio REST leggero sul 
+              Raspberry Pi per la lettura dei tag RFID. Documentazione ufficiale: 
+              <a href="https://flask.palletsprojects.com/" 
+                 target="_blank" 
+                 class="text-primary hover:text-green-500 underline">
+                https://flask.palletsprojects.com/
+              </a>
+            </li>
+          </ol>
+        </aside>
 
       </div>
     </div>
