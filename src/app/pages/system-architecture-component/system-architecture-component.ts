@@ -41,7 +41,21 @@ import { CommonModule } from '@angular/common';
             e lo inoltra al backend Django via HTTP; il backend interpreta l'evento, aggiorna la tabella 
             <code class="bg-gray-200 px-2 py-1 rounded text-primary">IoTEvent</code> e restituisce lo stato, che viene mostrato 
             dal frontend nella vista dei parcheggi.
+            La Figura 3.1 mostra l'architettura del prototipo, organizzata in quattro livelli principali: deposito biciclette, 
+            gateway/desk su Raspberry Pi, backend web e frontend utilizzato dall'operatore al Box Office.
           </p>
+
+          <!-- Figura architettura -->
+          <figure class="my-8">
+            <img 
+              src="assets/chapter3/Architettura.png" 
+              alt="Architettura logica del prototipo IoT"
+              class="w-full border border-gray-700 rounded"
+            />
+            <figcaption class="text-sm text-gray-500 mt-3 text-center">
+              <strong>Figura 3.1:</strong> Architettura logica del prototipo IoT per il controllo degli stalli della Velostazione.
+            </figcaption>
+          </figure>
         </section>
 
         <!-- Sezione 3.2 -->
