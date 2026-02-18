@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
       <div class="max-w-4xl mx-auto">
         
         <!-- Titolo capitolo -->
+        <h1 class="text-4xl font-bold text-primary mb-8">Prototipo IoT per il controllo degli stalli
+della Velostazione di Bologna</h1>
         <h1 class="text-4xl font-bold text-primary mb-8">Capitolo 1</h1>
         <h2 class="text-3xl font-bold text-primary mb-12">Introduzione</h2>
 
@@ -231,7 +233,7 @@ import { CommonModule } from '@angular/common';
               <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/" 
                  target="_blank" 
                  class="text-primary hover:text-green-500 underline">
-                https://www.raspberrypi.com/products/raspberry-pi-4-model-b/
+                Raspberry Pi 4 Model B
               </a>
             </li>
             <li>
@@ -284,4 +286,4 @@ import { CommonModule } from '@angular/common';
     }
   `]
 })
-export class IntroductionComponent {}
+export class IntroductionComponent { }
